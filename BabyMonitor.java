@@ -48,7 +48,25 @@ public class BabyMonitor {
                 if (isCrying) {
                     pauseDuration += duration;
                     // If pause exceeds threshold, reset cry duration
+                    if (pauseDuration > MAX_PAUSE_DURATION) {
+                        cryDuration = 0;
+                        isCrying = false;
+                    }
+                }
+            }
+        }
 
-        
-
+        // Output results based on thresholds
+        if (cryDuration >= MIN_CRY_DURATION) {
+            System.out.println("Baby Needs Attention!");
+            System.out.println("⏱ Duration: " + cryDuration + "s");
+            System.out.println("🔊 Frequency: " + (int)soundData[0][0] + " Hz");
+            System.out.println("⏸ Pauses: " + pauseDuration + "s");
+        } else {
+            System.out.println("🟢 No Action Needed");
+            System.out.println("Sound detected: " + cryDuration + "s");
+            System.out.println("Frequency: " + (int)soundData[0][0] + " Hz");
+            System.out.println("Pauses: " + pauseDuration + "s");
+        }
+    }
 }
