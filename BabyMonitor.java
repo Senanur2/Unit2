@@ -13,7 +13,7 @@ public class BabyMonitor {
         simulateSensorInput();
     }
 
-    private static void simulateSensorInput() {
+    //private static void simulateSensorInput() {
         ArrayList<double[]> soundDataList = new ArrayList<>();
         Random random = new Random();
 
@@ -34,6 +34,7 @@ public class BabyMonitor {
             // Process the sound data after every 5 readings
             if (i % 5 == 0) {
                 System.out.println("Processing Data...");
+                System.out.println(soundDataList);
                 processSoundData(soundDataList.toArray(new double[0][0]));
                 soundDataList.clear(); // Clear the list for new batch
             }
@@ -45,7 +46,7 @@ public class BabyMonitor {
             }
         }
     }
-
+//
     private static void processSoundData(double[][] soundData) {
         // Variables to track crying patterns
         int cryDuration = 0; // Continuous crying duration
